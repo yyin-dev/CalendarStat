@@ -1,0 +1,5 @@
+- Setup OAuth ID
+- Google authentication code: https://stackoverflow.com/a/68917936/9057530
+- yyin5@andrew.cmu.edu does not allow creating Google developer project. So I can
+  only use legendmakeryy@gmail.com. Share the calendar to it, and enable seeing
+  all details. The query result contains ColorID (Otherwise it's empty "").
