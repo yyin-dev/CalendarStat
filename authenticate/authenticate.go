@@ -15,27 +15,35 @@ import (
 	"google.golang.org/api/calendar/v3"
 )
 
-func GetService(credentialFile string) (*calendar.Service, *calendar.ColorsService) {
-	ctx := context.Background()
+func GetService(credentialFile string) *calendar.Service {
+	config, err := getConfig(credentialFile)
+	if err != nil {
+		log.Fatalf("Unable to parse client secret file to config: %v", err)
+	}
+
+	client := getClient(config)
+	service, err := calendar.NewService(context.Background(), option.WithHTTPClient(client))
+	if err != nil {
+		log.Fatalf("Unable to retrieve Calendar client: %v", err)
+	}
+
+	return service
+}
+
+func GetColorService(credentialFile string) *calendar.ColorsService {
+	service := GetService(credentialFile)
+	colorService := calendar.NewColorsService(service)
+	return colorService
+}
+
+func getConfig(credentialFile string) (*oauth2.Config, error) {
 	bytes, err := ioutil.ReadFile(credentialFile)
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
 	}
 
 	// If modifying these scopes, delete your previously saved token.json.
-	config, err := google.ConfigFromJSON(bytes, calendar.CalendarReadonlyScope)
-	if err != nil {
-		log.Fatalf("Unable to parse client secret file to config: %v", err)
-	}
-	client := getClient(config)
-
-	service, err := calendar.NewService(ctx, option.WithHTTPClient(client))
-	if err != nil {
-		log.Fatalf("Unable to retrieve Calendar client: %v", err)
-	}
-
-	colorService := calendar.NewColorsService(service)
-	return service, colorService
+	return google.ConfigFromJSON(bytes, calendar.CalendarReadonlyScope)
 }
 
 // Retrieve a token, saves the token, then returns the generated client.
@@ -43,7 +51,7 @@ func getClient(config *oauth2.Config) *http.Client {
 	// The file token.json stores the user's access and refresh tokens, and is
 	// created automatically when the authorization flow completes for the first
 	// time.
-	tokFile := "token.json"
+	tokFile := "../token.json"
 	tok, err := tokenFromFile(tokFile)
 	if err != nil {
 		tok = getTokenFromWeb(config)
