@@ -1,11 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"github.com/urfave/cli/v2"
-	"github.com/yinfredyue/CalendarStat/authenticate"
+	"github.com/yinfredyue/CalendarStat/cmd/calendars"
 	"github.com/yinfredyue/CalendarStat/cmd/colors"
-	"github.com/yinfredyue/CalendarStat/utils"
 	"log"
 	"os"
 )
@@ -15,26 +13,9 @@ type runConfig struct {
 }
 
 func run(config runConfig) {
-	service := authenticate.GetService(config.credential)
-	colorService := authenticate.GetColorService(config.credential)
-
-	// Get color configs
-	colorConfig, err := colorService.Get().Do()
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("Color config contains %v colors for events\n", len(colorConfig.Event))
-
-	// Get calendars
-	calendarsResult, err := service.CalendarList.List().Do()
-	if err != nil {
-		log.Fatal(err)
-	}
-	for _, calendar := range calendarsResult.Items {
-		utils.PrintCalendarListEntry(calendar)
-	}
-
-	// Get events
+	//service := authenticate.GetService(config.credential)
+	//
+	//// Get events
 	//startTimeString := config.startDate.Format(time.RFC3339)
 	//endTimeString := config.endDate.Format(time.RFC3339)
 	//
@@ -79,6 +60,14 @@ func main() {
 				Flags: colors.Flags(),
 				Action: func(ctx *cli.Context) error {
 					return colors.Cmd(ctx)
+				},
+			},
+			{
+				Name:  "calendars",
+				Usage: "show all calendars",
+				Flags: calendars.Flags(),
+				Action: func(ctx *cli.Context) error {
+					return calendars.Cmd(ctx)
 				},
 			},
 		},
