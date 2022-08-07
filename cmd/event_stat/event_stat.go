@@ -70,6 +70,7 @@ func Cmd(ctx *cli.Context) error {
 			TimeMin(conf.startDate.Format(time.RFC3339)).
 			TimeMax(conf.endDate.Format(time.RFC3339)).
 			OrderBy("startTime").
+			MaxResults(2500). // TODO: This limit is unlikely to be hit. But it's possible. Maybe we need paging?
 			Do()
 		if err != nil {
 			log.Fatal(err)

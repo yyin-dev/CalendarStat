@@ -51,3 +51,15 @@ func Time(eventDateTime *calendar.EventDateTime) time.Time {
 	}
 	return t
 }
+
+func DurationRatio(d1, d2 time.Duration) float32 {
+	nano1 := float32(d1 / time.Nanosecond)
+	nano2 := float32(d2 / time.Nanosecond)
+	return nano1 / nano2
+}
+
+func DurationDivide(d time.Duration, by float32) time.Duration {
+	nano := float32(d / time.Nanosecond)
+	nano /= by
+	return time.Duration(nano) * time.Nanosecond
+}

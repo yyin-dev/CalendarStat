@@ -2,10 +2,11 @@ package stat
 
 import (
 	"fmt"
-	"github.com/yinfredyue/CalendarStat/utils"
-	"google.golang.org/api/calendar/v3"
 	"strings"
 	"time"
+
+	"github.com/yinfredyue/CalendarStat/utils"
+	"google.golang.org/api/calendar/v3"
 )
 
 type GroupEventBy int64
@@ -92,9 +93,7 @@ func BuildEventGroup(events []*calendar.Event, cal *calendar.CalendarListEntry, 
 			}
 
 			// Update group.events
-			group := byColor[event.ColorId]
-			group.events = append(group.events, event)
-			byColor[event.ColorId] = group
+			byColor[event.ColorId].events = append(byColor[event.ColorId].events, event)
 		}
 	}
 
@@ -115,8 +114,8 @@ func (eg *EventGroup) Stat() *EventGroupStat {
 		duration += endTime.Sub(startTime)
 	}
 
-	numWeeks := eg.end.Sub(eg.start) / (time.Hour * 7 * 24)
-	weeklyDuration := duration / numWeeks
+	numWeeks := utils.DurationRatio(eg.end.Sub(eg.start), time.Hour*24*7)
+	weeklyDuration := utils.DurationDivide(duration, numWeeks)
 
 	var byColor map[ColorId]*EventGroupStat
 	if eg.byColor != nil {
