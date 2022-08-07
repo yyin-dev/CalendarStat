@@ -1,14 +1,15 @@
 package flags
 
 import (
-	"github.com/urfave/cli/v2"
 	"time"
+
+	"github.com/urfave/cli/v2"
 )
 
 func CredentialFlag() cli.StringFlag {
 	return cli.StringFlag{
 		Name:  "credential",
-		Value: "../credentials.json",
+		Value: "../secret/credentials.json",
 		Usage: "Google OAuth credential file",
 	}
 }

@@ -2,12 +2,13 @@ package event_stat
 
 import (
 	"fmt"
+	"log"
+	"time"
+
 	"github.com/urfave/cli/v2"
 	"github.com/yinfredyue/CalendarStat/authenticate"
 	"github.com/yinfredyue/CalendarStat/cmd/flags"
 	"github.com/yinfredyue/CalendarStat/stat"
-	"log"
-	"time"
 )
 
 type config struct {
@@ -79,7 +80,7 @@ func Cmd(ctx *cli.Context) error {
 		eventGroup := stat.BuildEventGroup(events, calendar, conf.groupEventBy, conf.startDate, conf.endDate)
 		eventGroupStat := eventGroup.Stat()
 
-		fmt.Printf("%v\n  %v\n", eventGroup, eventGroupStat)
+		fmt.Printf("%v\n  %v\n\n", eventGroup, eventGroupStat)
 	}
 
 	return nil
