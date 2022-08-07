@@ -65,7 +65,8 @@ func getClient(config *oauth2.Config) *http.Client {
 func getTokenFromWeb(config *oauth2.Config) *oauth2.Token {
 	authURL := config.AuthCodeURL("state-token", oauth2.AccessTypeOffline)
 	fmt.Printf("Go to the following link in your browser then type the "+
-		"authorization code: \n%v\n", authURL)
+		"authorization code. Note: It's very likely that you will see, after the access agreement, 'This site can't be reached' from the browser. This is as expected. "+
+		"Get the access code from the uri as follows: https://localhost...code=[code_you_should_copy]&scope...: \n%v\n", authURL)
 
 	var authCode string
 	if _, err := fmt.Scan(&authCode); err != nil {
