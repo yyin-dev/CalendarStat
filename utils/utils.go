@@ -2,15 +2,16 @@ package utils
 
 import (
 	"fmt"
-	"github.com/davecgh/go-spew/spew"
-	"google.golang.org/api/calendar/v3"
 	"log"
 	"time"
+
+	"github.com/davecgh/go-spew/spew"
+	"google.golang.org/api/calendar/v3"
 )
 
 func PrintCalendarListEntry(calendar *calendar.CalendarListEntry) {
-	fmt.Printf("Calendar{Id=%v, Summary=%v, BackgroundColor=%v, ColorId=%v}\n",
-		calendar.Id, calendar.Summary, calendar.BackgroundColor, calendar.ColorId)
+	fmt.Printf("Calendar{Summary=%v, Id=%v, BackgroundColor=%v, ColorId=%v}\n",
+		calendar.Summary, calendar.Id, calendar.BackgroundColor, calendar.ColorId)
 }
 
 func PrintEvent(event *calendar.Event) {

@@ -42,34 +42,35 @@ Event{Summary=Storage Systems, Start=2021-09-20T16:40:00-04:00, End=2021-09-20T1
 ```
 Display statistics about events (calendar-wise)
 ``` 
-EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=250, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+$ cmd event-stat -start-date 2021-09-19T00:00:00Z -end-date 2021-10-23T00:00:00Z -group-event-by calendar
+EventGroup{calendar=Job Search, len(events)=0, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  EventGroupStat{duration=0s, weeklyDuration=0s, byColor={}}
+EventGroup{calendar=Study, len(events)=0, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  EventGroupStat{duration=0s, weeklyDuration=0s, byColor={}}
+EventGroup{calendar=Course Schedule, len(events)=0, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  EventGroupStat{duration=0s, weeklyDuration=0s, byColor={}}
+EventGroup{calendar=Others, len(events)=250, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
   EventGroupStat{duration=314h55m0s, weeklyDuration=78h43m45s, byColor={}}
-EventGroup{calendar=Holidays in United States, len(events)=2, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
-  EventGroupStat{duration=48h0m0s, weeklyDuration=12h0m0s, byColor={}}
-EventGroup{calendar=legendmakeryy@gmail.com, len(events)=1, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
-  EventGroupStat{duration=24h0m0s, weeklyDuration=6h0m0s, byColor={}}
 ```
 Display statistics about events (calendar-wise AND color-wise)
 ```
 $ cmd event-stat -start-date 2021-09-19T00:00:00Z -end-date 2021-10-23T00:00:00Z -group-event-by colorId
-EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=250, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={
-  colorId=1, group=EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=87, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
-  colorId=4, group=EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=46, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
-  colorId=5, group=EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=1, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
-  colorId=2, group=EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=77, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
-  colorId=, group=EventGroup{calendar=yyin5@andrew.cmu.edu, len(events)=39, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}}}
+EventGroup{calendar=Job Search, len(events)=0, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  EventGroupStat{duration=0s, weeklyDuration=0s, byColor={}}
+EventGroup{calendar=CMU Study, len(events)=0, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  EventGroupStat{duration=0s, weeklyDuration=0s, byColor={}}
+EventGroup{calendar=Course Schedule, len(events)=0, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  EventGroupStat{duration=0s, weeklyDuration=0s, byColor={}}
+EventGroup{calendar=Others, len(events)=250, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={
+  colorId=5, group=EventGroup{calendar=Others, len(events)=1, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  colorId=2, group=EventGroup{calendar=Others, len(events)=77, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  colorId=, group=EventGroup{calendar=Others, len(events)=39, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  colorId=1, group=EventGroup{calendar=Others, len(events)=87, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}
+  colorId=4, group=EventGroup{calendar=Others, len(events)=46, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}}}
   EventGroupStat{duration=314h55m0s, weeklyDuration=78h43m45s, byColor={
+    colorId=2, stat=EventGroupStat{duration=118h25m0s, weeklyDuration=29h36m15s, byColor={}}
+    colorId=, stat=EventGroupStat{duration=45h40m0s, weeklyDuration=11h25m0s, byColor={}}
     colorId=1, stat=EventGroupStat{duration=117h10m0s, weeklyDuration=29h17m30s, byColor={}}
     colorId=4, stat=EventGroupStat{duration=33h25m0s, weeklyDuration=8h21m15s, byColor={}}
-    colorId=5, stat=EventGroupStat{duration=15m0s, weeklyDuration=3m45s, byColor={}}
-    colorId=2, stat=EventGroupStat{duration=118h25m0s, weeklyDuration=29h36m15s, byColor={}}
-    colorId=, stat=EventGroupStat{duration=45h40m0s, weeklyDuration=11h25m0s, byColor={}}}}
-EventGroup{calendar=Holidays in United States, len(events)=2, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={
-  colorId=, group=EventGroup{calendar=Holidays in United States, len(events)=2, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}}}
-  EventGroupStat{duration=48h0m0s, weeklyDuration=12h0m0s, byColor={
-    colorId=, stat=EventGroupStat{duration=48h0m0s, weeklyDuration=12h0m0s, byColor={}}}}
-EventGroup{calendar=legendmakeryy@gmail.com, len(events)=1, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={
-  colorId=6, group=EventGroup{calendar=legendmakeryy@gmail.com, len(events)=1, start=2021-09-19 00:00:00 +0000 UTC, end=2021-10-23 00:00:00 +0000 UTC, byColor={}}}}
-  EventGroupStat{duration=24h0m0s, weeklyDuration=6h0m0s, byColor={
-    colorId=6, stat=EventGroupStat{duration=24h0m0s, weeklyDuration=6h0m0s, byColor={}}}}
+    colorId=5, stat=EventGroupStat{duration=15m0s, weeklyDuration=3m45s, byColor={}}}}
 ```
