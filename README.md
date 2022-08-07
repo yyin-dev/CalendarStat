@@ -2,7 +2,16 @@
 
 CalendarStat generates report and statistics from your Google Calendar.
 
+
+
 Usage
+```
+$ Install go
+$ git clone https://github.com/yinfredyue/CalendarStat.git
+$ cd CalendarStat/cmd
+$ go install && cmd
+```
+
 ```
 $ cmd
 NAME:
