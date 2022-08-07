@@ -7,6 +7,7 @@ import (
 	"github.com/urfave/cli/v2"
 	"github.com/yinfredyue/CalendarStat/cmd/calendars"
 	"github.com/yinfredyue/CalendarStat/cmd/colors"
+	"github.com/yinfredyue/CalendarStat/cmd/event_stat"
 	"github.com/yinfredyue/CalendarStat/cmd/events"
 )
 
@@ -38,6 +39,15 @@ func main() {
 		},
 	}
 
+	eventStatCommand := &cli.Command{
+		Name:  "event-stat",
+		Usage: "Get statistics about events",
+		Flags: event_stat.Flags(),
+		Action: func(ctx *cli.Context) error {
+			return event_stat.Cmd(ctx)
+		},
+	}
+
 	app := &cli.App{
 		Name:  "CalendarStat",
 		Usage: "A tool for analyzing your Google Calendar",
@@ -45,6 +55,7 @@ func main() {
 			colorCommand,
 			calendarsCommand,
 			eventsCommand,
+			eventStatCommand,
 		},
 	}
 

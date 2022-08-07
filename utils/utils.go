@@ -2,7 +2,9 @@ package utils
 
 import (
 	"fmt"
+	"github.com/davecgh/go-spew/spew"
 	"google.golang.org/api/calendar/v3"
+	"log"
 	"time"
 )
 
@@ -29,10 +31,21 @@ func PrintEvent(event *calendar.Event) {
 	)
 }
 
-func TimeIn(t time.Time, name string) (time.Time, error) {
-	loc, err := time.LoadLocation(name)
-	if err == nil {
-		t = t.In(loc)
+func Time(eventDateTime *calendar.EventDateTime) time.Time {
+	timeStr := eventDateTime.DateTime
+
+	if timeStr == "" {
+		timeStr = eventDateTime.Date
+		if timeStr != "" {
+			timeStr += "T00:00:00Z"
+		} else {
+			spew.Dump(eventDateTime)
+		}
 	}
-	return t, err
+
+	t, err := time.Parse(time.RFC3339, timeStr)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return t
 }

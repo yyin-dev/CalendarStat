@@ -13,6 +13,18 @@ func CredentialFlag() cli.StringFlag {
 	}
 }
 
+func CalendarIdFlag() cli.StringFlag {
+	return cli.StringFlag{Name: "calendar-id",
+		Usage:    "Calendar ID (view all calendar IDs with command 'calendars'",
+		Required: true}
+}
+
+func GroupEventByFlag() cli.StringFlag {
+	return cli.StringFlag{Name: "group-event-by",
+		Usage:    "Choose from [calendar|colorId]",
+		Required: true}
+}
+
 func DateFlag(name string) cli.TimestampFlag {
 	return cli.TimestampFlag{
 		Name:        name,
