@@ -22,12 +22,13 @@ func PrintEvent(event *calendar.Event) {
 		return res
 	}
 
-	fmt.Printf("Event{Summary=%v, Start=%v, End=%v, ColorId=%v, Id=%v}\n",
+	fmt.Printf("Event{Summary=%v, Start=%v, End=%v, ColorId=%v, Id=%v, Source=%v}\n",
 		event.Summary,
 		getDate(event.Start),
 		getDate(event.End),
 		event.ColorId,
 		event.Id,
+		event.Source,
 	)
 }
 
